@@ -1,14 +1,17 @@
-import styled from 'styled-components/native'
+import styled, {css} from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
-export const Conteiner = styled.View `
-    background-color: #E0D9F6;
+interface tipoIcone {
+    tipo: 'entrada' | 'saida' | 'total'
+}
+
+export const Conteiner = styled.View<tipoIcone>`
+    background-color: ${({tipo}) => tipo === 'total' ? '#586ae2' : '#fff'} ;
     width: 300px;
     border-radius: 5px;
     padding: 20px;
     margin-left: 16px;
     margin: 12px;
-
 `
 export const Cabecalho = styled.View `
     margin-top: 6px;
@@ -16,13 +19,26 @@ export const Cabecalho = styled.View `
     justify-content: space-between;
 `
 
-export const Titulo = styled.Text `
+export const Titulo = styled.Text<tipoIcone>`
     font-size: 18px;
     font-weight: 600;
+    color: ${({tipo}) => tipo === 'total' ? '#fff' : '#000'} ;
 `
 
-export const Icone = styled(Icon) `
+export const Icone = styled(Icon)<tipoIcone>`
     font-size: 28px; 
+
+    ${({tipo}) => tipo === 'entrada' && css`
+        color: #38B000
+    `}
+
+    ${({tipo}) => tipo === 'saida' && css`
+        color: #E5383B
+    `}
+
+    ${({tipo}) => tipo === 'total' && css`
+        color: #fff
+    `}
  `
 
 export const Rodape = styled.View `
@@ -30,11 +46,13 @@ export const Rodape = styled.View `
     margin-bottom: 6px;
 `
 
-export const Total = styled.Text `
+export const Total = styled.Text<tipoIcone>`
    font-size: 36px;
    font-weight: 600;
+   color: ${({tipo}) => tipo === 'total' ? '#fff' : '#000'} ;
 `
 
-export const UltimaTransacao = styled.Text `
+export const UltimaTransacao = styled.Text<tipoIcone>`
    font-size: 16px;
+   color: ${({tipo}) => tipo === 'total' ? '#fff' : '#000'} ;
 `

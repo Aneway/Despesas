@@ -2,28 +2,31 @@ import React from 'react'
 import { Conteiner, Cabecalho, Titulo, Icone, Rodape, Total, UltimaTransacao} from './estilo'
 
 interface Props {
-    icone: string;
+    tipo: 'entrada' | 'saida' | 'total';
     titulo: string;
     total: string;
     ultimaTransacao: string;
 }
 
 const icones ={
-    entrada: '',
-    saida: '',
-    total: ''
+    entrada: 'arrow-circle-up',
+    saida: 'arrow-circle-down',
+    total: 'dollar-sign'
 }
 
-export function Painel({icone, titulo, total, ultimaTransacao}: Props){
+export function Painel({tipo, titulo, total, ultimaTransacao}: Props){
     return(
-        <Conteiner>
+        <Conteiner tipo={tipo}>
             <Cabecalho>
-               <Titulo>{titulo}</Titulo>
-               <Icone name={icone}></Icone>
+               <Titulo tipo={tipo}>{titulo}</Titulo>
+               <Icone 
+                    name={icones[tipo]}
+                    tipo={tipo}>
+               </Icone>
             </Cabecalho>
             <Rodape>
-                <Total>{total}</Total>
-                <UltimaTransacao>{ultimaTransacao}</UltimaTransacao>
+                <Total tipo={tipo}>{total}</Total>
+                <UltimaTransacao tipo={tipo}>{ultimaTransacao}</UltimaTransacao>
             </Rodape>
             
         </Conteiner>

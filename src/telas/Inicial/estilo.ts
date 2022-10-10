@@ -3,8 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export const Conteiner = styled.View `
     flex: 1;
-    background-color:'#EAEBEB';
-
+    background-color: #ECECF1;
 `
 
 export const Cabecalho= styled.View `
@@ -21,9 +20,6 @@ export const Paineis = styled.ScrollView.attrs({
     position: absolute;
     margin-top: 80px;
 `
-export const Transacoes = styled.View `
-`
-
 export const UsuarioConteiner = styled.View `
     width: 100%;
     padding: 12px;
@@ -60,4 +56,6 @@ export const Icone = styled(Icon)`
   color: #fff;
   font-size: 18px;
   font-weight: 300;
+`
+export const Transacoes = styled.FlatList`
 `
